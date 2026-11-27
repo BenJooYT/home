@@ -1,0 +1,364 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>benjooyt.github.io — site index</title>
+<meta name="description" content="Every live GitHub Pages site under benjooyt.github.io, in one index.">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><rect width='16' height='16' fill='%231a1613'/><rect x='3' y='4' width='10' height='1.5' fill='%23f7f3ea'/><rect x='3' y='7.25' width='10' height='1.5' fill='%23f7f3ea'/><rect x='3' y='10.5' width='6' height='1.5' fill='%239a3b1b'/></svg>">
+<style>
+	:root {
+		--paper: #f7f3ea;
+		--ink: #1a1613;
+		--muted: #6d6354;
+		--rule: #ded5c5;
+		--wash: rgba(26, 22, 19, 0.045);
+		--accent: #9a3b1b;
+		--display: ui-serif, "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+		--sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+		--mono: ui-monospace, "Cascadia Mono", "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+		color-scheme: light;
+	}
+
+	@media (prefers-color-scheme: dark) {
+		:root {
+			--paper: #14120f;
+			--ink: #efe9dd;
+			--muted: #a1978a;
+			--rule: #2c2620;
+			--wash: rgba(239, 233, 221, 0.055);
+			--accent: #e07a45;
+			color-scheme: dark;
+		}
+	}
+
+	* {
+		box-sizing: border-box;
+	}
+
+	html {
+		-webkit-text-size-adjust: 100%;
+	}
+
+	body {
+		margin: 0;
+		background: var(--paper);
+		color: var(--ink);
+		font-family: var(--sans);
+		font-size: 1rem;
+		line-height: 1.5;
+		-webkit-font-smoothing: antialiased;
+	}
+
+	.shell {
+		max-width: 61rem;
+		margin: 0 auto;
+		padding: 0 1.25rem 4rem;
+	}
+
+	.skip {
+		position: absolute;
+		left: -9999px;
+	}
+
+	.skip:focus {
+		left: 1rem;
+		top: 1rem;
+		z-index: 10;
+		padding: 0.6rem 1rem;
+		background: var(--ink);
+		color: var(--paper);
+		font-family: var(--mono);
+		font-size: 0.8rem;
+		text-decoration: none;
+	}
+
+	header {
+		padding: 5.5rem 0 2.5rem;
+	}
+
+	.stamp {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: baseline;
+		justify-content: space-between;
+		gap: 0.5rem 1.5rem;
+		border-bottom: 1px solid var(--ink);
+		padding-bottom: 0.75rem;
+	}
+
+	.host {
+		margin: 0;
+		font-family: var(--mono);
+		font-size: 0.82rem;
+		letter-spacing: 0.04em;
+	}
+
+	.count {
+		margin: 0;
+		font-family: var(--mono);
+		font-size: 0.82rem;
+		color: var(--muted);
+		letter-spacing: 0.04em;
+	}
+
+	h1 {
+		margin: 1.6rem 0 0;
+		font-family: var(--display);
+		font-weight: 400;
+		font-size: clamp(2rem, 6.4vw, 3.35rem);
+		line-height: 1.08;
+		letter-spacing: -0.012em;
+		max-width: 20ch;
+	}
+
+	.lede {
+		margin: 1.1rem 0 0;
+		max-width: 46ch;
+		color: var(--muted);
+		font-size: 1.02rem;
+	}
+
+	.index {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+
+	.index li {
+		border-top: 1px solid var(--rule);
+	}
+
+	.index li:first-child {
+		border-top-color: var(--ink);
+	}
+
+	.entry {
+		display: grid;
+		grid-template-columns: 3.25rem minmax(0, 1fr) auto;
+		gap: 0 1.25rem;
+		align-items: start;
+		padding: 1.7rem 0.4rem 1.7rem 0;
+		text-decoration: none;
+		color: inherit;
+		transition: background-color 160ms ease-out, padding-left 160ms ease-out;
+	}
+
+	.num {
+		font-family: var(--mono);
+		font-size: 0.78rem;
+		color: var(--muted);
+		padding-top: 0.55rem;
+		letter-spacing: 0.04em;
+	}
+
+	.body {
+		display: block;
+		min-width: 0;
+	}
+
+	.name {
+		display: block;
+		font-family: var(--display);
+		font-size: clamp(1.35rem, 3.6vw, 1.75rem);
+		line-height: 1.2;
+		letter-spacing: -0.008em;
+		transition: color 160ms ease-out;
+		overflow-wrap: anywhere;
+	}
+
+	.desc {
+		display: block;
+		margin-top: 0.35rem;
+		color: var(--muted);
+		font-size: 0.95rem;
+		max-width: 52ch;
+	}
+
+	.path {
+		font-family: var(--mono);
+		font-size: 0.78rem;
+		color: var(--muted);
+		padding-top: 0.55rem;
+		white-space: nowrap;
+		transition: color 160ms ease-out, transform 160ms ease-out;
+	}
+
+	.entry:hover,
+	.entry:focus-visible {
+		background: var(--wash);
+		padding-left: 0.75rem;
+	}
+
+	.entry:hover .name,
+	.entry:focus-visible .name,
+	.entry:hover .path,
+	.entry:focus-visible .path {
+		color: var(--accent);
+	}
+
+	.entry:hover .path,
+	.entry:focus-visible .path {
+		transform: translateX(-0.4rem);
+	}
+
+	.entry:focus-visible {
+		outline: 2px dashed var(--accent);
+		outline-offset: -2px;
+	}
+
+	footer {
+		margin-top: 3.25rem;
+		padding-top: 1.1rem;
+		border-top: 1px solid var(--rule);
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem 1.5rem;
+		justify-content: space-between;
+		font-family: var(--mono);
+		font-size: 0.78rem;
+		color: var(--muted);
+	}
+
+	footer a {
+		color: var(--muted);
+		text-decoration: none;
+		border-bottom: 1px solid var(--rule);
+	}
+
+	footer a:hover,
+	footer a:focus-visible {
+		color: var(--accent);
+		border-bottom-color: var(--accent);
+	}
+
+	footer a:focus-visible {
+		outline: 2px dashed var(--accent);
+		outline-offset: 3px;
+	}
+
+	@media (max-width: 40rem) {
+		header {
+			padding-top: 3.5rem;
+		}
+
+		.entry {
+			grid-template-columns: 2.4rem minmax(0, 1fr);
+			gap: 0 0.75rem;
+			padding: 1.35rem 0.25rem 1.35rem 0;
+		}
+
+		.num,
+		.path {
+			padding-top: 0.3rem;
+		}
+
+		.path {
+			grid-column: 2;
+			margin-top: 0.55rem;
+		}
+
+		.desc {
+			font-size: 0.92rem;
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.entry,
+		.name,
+		.path {
+			transition: none;
+		}
+
+		.entry:hover .path,
+		.entry:focus-visible .path {
+			transform: none;
+		}
+	}
+</style>
+</head>
+<body>
+	<a class="skip" href="#index">Skip to the site index</a>
+	<div class="shell">
+		<header>
+			<div class="stamp">
+				<p class="host">benjooyt.github.io</p>
+				<p class="count">06 sites</p>
+			</div>
+			<h1>Everything I've put on GitHub Pages, still running.</h1>
+			<p class="lede">Six project sites on one host. All client-side, all load straight from the browser tab.</p>
+		</header>
+
+		<main>
+			<ol class="index" id="index">
+				<li>
+					<a class="entry" href="https://benjooyt.github.io/chaoticlovers/">
+						<span class="num">01</span>
+						<span class="body">
+							<span class="name">chaoticlovers</span>
+							<span class="desc">One page shared by two people: a counter of days together, and a wall either of us can write on.</span>
+						</span>
+						<span class="path">/chaoticlovers</span>
+					</a>
+				</li>
+				<li>
+					<a class="entry" href="https://benjooyt.github.io/lieyabull-site/">
+						<span class="num">02</span>
+						<span class="body">
+							<span class="name">lieyabull-site</span>
+							<span class="desc">Workshop shelf: Minecraft contraptions, arcade picks, and the latest notes. Reads in English or Hungarian.</span>
+						</span>
+						<span class="path">/lieyabull-site</span>
+					</a>
+				</li>
+				<li>
+					<a class="entry" href="https://benjooyt.github.io/wordlist/">
+						<span class="num">03</span>
+						<span class="body">
+							<span class="name">wordlist</span>
+							<span class="desc">Hungarian to English vocab trainer. Pick a book, drill its units as flashcards, then run the 20-words-in-fifteen-minutes typing sprint.</span>
+						</span>
+						<span class="path">/wordlist</span>
+					</a>
+				</li>
+				<li>
+					<a class="entry" href="https://benjooyt.github.io/browser-games/">
+						<span class="num">04</span>
+						<span class="body">
+							<span class="name">browser-games</span>
+							<span class="desc">Breakout Blast, Neon Drift, Neon Horde Solo, Pong Duo, Swarm Survival and Bastion Bros, playable with nothing to download.</span>
+						</span>
+						<span class="path">/browser-games</span>
+					</a>
+				</li>
+				<li>
+					<a class="entry" href="https://benjooyt.github.io/taiga-s1-android/">
+						<span class="num">05</span>
+						<span class="body">
+							<span class="name">taiga-s1-android</span>
+							<span class="desc">A twin-cylinder engine modeled in 3D by an agent driving FreeCAD, entirely on an Android phone. Viewer, test run, and full parts list.</span>
+						</span>
+						<span class="path">/taiga-s1-android</span>
+					</a>
+				</li>
+				<li>
+					<a class="entry" href="https://benjooyt.github.io/magasepites-II/">
+						<span class="num">06</span>
+						<span class="body">
+							<span class="name">magasepites-II</span>
+							<span class="desc">Offline study companion for Magasépítés II (GS-5-17): lesson cards, quizzes, spaced review, and a simulated exam. In Hungarian.</span>
+						</span>
+						<span class="path">/magasepites-II</span>
+					</a>
+				</li>
+			</ol>
+		</main>
+
+		<footer>
+			<span>Site index for BenJooYT</span>
+			<span><a href="https://github.com/BenJooYT">github.com/BenJooYT</a></span>
+		</footer>
+	</div>
+</body>
+</html>
